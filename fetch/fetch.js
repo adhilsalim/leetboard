@@ -28,17 +28,9 @@ function fetchLeetCodeData(username) {
 
   if (response.getResponseCode() === 200) {
     const data = JSON.parse(response.getContentText());
-    console.log(
-      "number of problems solved by",
-      username,
-      "is",
-      data.data.matchedUser.submitStats.acSubmissionNum[0].count
-    );
+    // console.log("number of problems solved by",username, "is",data.data.matchedUser.submitStats.acSubmissionNum[0].count);
+    return data.data.matchedUser.submitStats.acSubmissionNum[0].count;
   } else {
     Logger.log("Error:", response.getResponseCode(), response.getContentText());
   }
-}
-
-function myFunction() {
-  fetchLeetCodeData("username");
 }
