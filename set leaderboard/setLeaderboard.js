@@ -1,9 +1,15 @@
+const sheet = SpreadsheetApp.getActiveSpreadsheet();
+const leaderboardSheet = sheet.getSheetByName("leaderboard");
+let leaderboardSheetData = leaderboardSheet
+  .getRange(2, 2, leaderboardSheet.getLastRow() - 1, 4)
+  .getValues();
+
 function setLeaderboard() {
-  for (let i = 1; i < leaderboardSheetData.length; i++) {
-    leaderboardSheetData[i][4] = fetchLeetCodeData(leaderboardSheetData[i][3]);
-    leaderboardSheet.getRange(i + 1, 5).setValue(leaderboardSheetData[i][4]);
+  for (let i = 0; i < leaderboardSheetData.length; i++) {
+    leaderboardSheetData[i][3] = fetchLeetCodeData(leaderboardSheetData[i][2]);
+    leaderboardSheet.getRange(i + 2, 5).setValue(leaderboardSheetData[i][3]);
   }
-  sortBoard();
+  // sortBoard();
 }
 
 function sortBoard() {
