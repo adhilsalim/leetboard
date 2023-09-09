@@ -22,6 +22,10 @@ function arrayToJSON(data) {
     var jsonObject = {};
 
     for (var j = 0; j < headers.length; j++) {
+      if (headers[j] == "HISTORY") {
+        jsonObject[headers[j]] = JSON.parse(row[j]);
+        continue;
+      }
       jsonObject[headers[j]] = row[j];
     }
 
