@@ -11,7 +11,6 @@ function setLeaderboard() {
 function sortBoard() {
   for (let i = 0; i < leaderboardSheetData.length; i++) {
     for (let j = 0; j < leaderboardSheetData.length - i - 1; j++) {
-      console.log(leaderboardSheetData[j][3], leaderboardSheetData[j + 1][3]);
       if (leaderboardSheetData[j][3] < leaderboardSheetData[j + 1][3]) {
         swapRows(j, j + 1);
       }
