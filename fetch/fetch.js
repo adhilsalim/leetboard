@@ -1,5 +1,4 @@
-function fetchLeetCodeData() {
-  const username = "adhilsalim";
+function fetchLeetCodeData(username) {
   const url = "https://leetcode.com/graphql";
 
   const query = `
@@ -29,8 +28,17 @@ function fetchLeetCodeData() {
 
   if (response.getResponseCode() === 200) {
     const data = JSON.parse(response.getContentText());
-    console.log(data.data.matchedUser.submitStats.acSubmissionNum[0].count);
+    console.log(
+      "number of problems solved by",
+      username,
+      "is",
+      data.data.matchedUser.submitStats.acSubmissionNum[0].count
+    );
   } else {
     Logger.log("Error:", response.getResponseCode(), response.getContentText());
   }
+}
+
+function myFunction() {
+  fetchLeetCodeData("username");
 }
